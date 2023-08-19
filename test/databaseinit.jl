@@ -2,7 +2,7 @@
 # only need to run once.
 using SQLite
 
-db = SQLite.DB("vendor.db")
+db = SQLite.DB("database/vendor.db")
 
 SQLite.execute(db, """
     CREATE TABLE IF NOT EXISTS vendor (

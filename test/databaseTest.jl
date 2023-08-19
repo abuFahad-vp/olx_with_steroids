@@ -1,7 +1,7 @@
 # just to test the database functions. Nothing to do with server
 using SQLite
 
-db = SQLite.DB("vendor.db")
+db = SQLite.DB("database/vendor.db")
 command = """
 SELECT * FROM vendor
 WHERE email LIKE 'fahadabu30c@gmail.com';

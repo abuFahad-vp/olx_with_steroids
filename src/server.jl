@@ -1,8 +1,10 @@
 using Genie, Genie.Router, Genie.Renderer.Html, Genie.Requests, SQLite
 
-include("signup.html")
-include("login.html")
-include("redirect_signup_login.html")
+include("../pages/signup.html")
+include("../pages/login.html")
+include("../pages/redirect_signup_login.html")
+
+database_path = "database/vendor.db"
 
 
 route("/login") do
@@ -16,7 +18,7 @@ route("/login",method=POST) do
 
   println(email," ",password)
 
-  db = SQLite.DB("vendor.db")
+  db = SQLite.DB(database_path)
 
   command = """
   SELECT * FROM vendor
@@ -70,7 +72,7 @@ route("/signup", method = POST) do
   println("$storeName\n$storeAddress")
   println("$password\n$contactNumber\n$email")
 
-  db = SQLite.DB("vendor.db")
+  db = SQLite.DB(database_path)
 
   SQLite.execute(db, """
     INSERT INTO vendor (storeName,storeAddress,contactNumber,password,email)
